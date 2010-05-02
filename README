@@ -1,0 +1,122 @@
+NAME
+    HTML::HTML5::Writer - output a DOM as HTML5
+
+VERISON
+    0.01
+
+SYNOPSIS
+     use HTML::HTML5::Writer;
+ 
+     my $writer = HTML::HTML5::Writer->new;
+     print $writer->document($dom);
+
+DESCRIPTION
+    This module outputs XML::LibXML::Node objects as HTML5 strings. It works
+    well on DOM trees that represent valid HTML/XHTML documents; less well
+    on other DOM trees.
+
+  Constructor
+    "$writer = HTML::HTML5::Writer->new(%opts)"
+        Create a new writer object. Options include:
+
+        *   markup
+
+            Choose which serialisation of HTML5 to use: 'html' or 'xhtml'.
+
+        *   polyglot
+
+            Set to '1' in order to attempt to produce output which works as
+            both XML and HTML.
+
+        *   doctype
+
+            Set this to a string to choose which <!DOCTYPE> tag to output.
+            Note, this purely sets the <!DOCTYPE> tag and does not change
+            how the rest of the document is output.
+
+            The following constants are provided for convenience:
+            DOCTYPE_HTML5, DOCTYPE_LEGACY, DOCTYPE_NIL, DOCTYPE_HTML32,
+            DOCTYPE_HTML4, DOCTYPE_XHTML1, DOCTYPE_XHTML11,
+            DOCTYPE_XHTML_BASIC, DOCTYPE_XHTML_RDFA.
+
+            Defaults to DOCTYPE_HTML5.
+
+        *   encoding
+
+            This module always returns strings in Perl's internal utf8
+            encoding, but if you can set the 'encoding' option to 'ascii' to
+            create output that would be suitable for re-encoding to ASCII
+            (e.g. it will entity-encode characters which do not exist in
+            ASCII).
+
+        *   quote_attributes
+
+            Set this to a 'force' to force attributes to be quoted.
+            Otherwise, the writer will automatically detect when attributes
+            need quoting.
+
+        *   voids
+
+            Set to 'slash' to force void elements to always be terminated
+            with '/>'. Otherwise, they'll only be terminated that way in
+            polyglot or XHTML documents.
+
+        *   start_tags and end_tags
+
+            Except in polyglot and XHTML documents, some elements allow
+            their start and/or end tags to be omitted in certain
+            circumstances. By setting these to 'force', you can prevent them
+            from being omitted.
+
+        *   refs
+
+            Special characters that can't be encoded as named entities need
+            to be encoded as numeric character references instead. These can
+            be expressed in decimal or hexadecimal. Setting this option to
+            'dec' or 'hex' allows you to choose. The default is 'hex'.
+
+  Public Methods
+    "$writer->document($node)"
+        Outputs an XML::LibXML::Document as HTML.
+
+    "$writer->element($node)"
+        Outputs an XML::LibXML::Element as HTML.
+
+    "$writer->attribute($node)"
+        Outputs an XML::LibXML::Attr as HTML.
+
+    "$writer->text($node)"
+        Outputs an XML::LibXML::Text as HTML.
+
+    "$writer->cdata($node)"
+        Outputs an XML::LibXML::CDATASection as HTML.
+
+    "$writer->comment($node)"
+        Outputs an XML::LibXML::Comment as HTML.
+
+    "$writer->doctype"
+        Outputs the writer's DOCTYPE.
+
+    "$writer->is_xhtml"
+        Boolean indicating if $writer is configured to output XHTML.
+
+    "$writer->is_polyglot"
+        Boolean indicating if $writer is configured to output polyglot HTML.
+
+BUGS
+    Please report any bugs to <http://rt.cpan.org/>.
+
+SEE ALSO
+    HTML::HTML5::Parser, HTML::HTML5::Sanity, XML::LibXML,
+    XML::LibXML::Debugging.
+
+AUTHOR
+    Toby Inkster <tobyink@cpan.org>.
+
+COPYRIGHT AND LICENSE
+    Copyright (C) 2010 by Toby Inkster
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself, either Perl version 5.8 or, at your
+    option, any later version of Perl 5 you may have available.
+
