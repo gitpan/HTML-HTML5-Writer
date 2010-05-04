@@ -17,7 +17,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA  => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">' ,
 	};
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our %EXPORT_TAGS = (
 	'doctype' => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4
@@ -42,7 +42,7 @@ our @OptionalEnd = qw(html head body tbody dt dd li optgroup option p
 BEGIN
 {
 	eval 'use HTML::HTML5::Parser::NamedEntityList;';
-	if (!@!)
+	unless (@!)
 	{
 		while (my ($entity, $char) = each(%{ $HTML::HTML5::Parser::TagSoupParser::EntityChar }))
 		{
@@ -70,7 +70,7 @@ sub new
 sub is_xhtml
 {
 	my ($self) = @_;
-	return ($self->{'markup'} =~ /xhtml/i);
+	return ($self->{'markup'} =~ m'^(xml|xhtml|application/xml|text/xml|application/xhtml\+xml)$'i);
 }
 
 sub is_polyglot
@@ -498,7 +498,7 @@ HTML::HTML5::Writer - output a DOM as HTML5
 
 =head1 VERISON
 
-0.01
+0.02
 
 =head1 SYNOPSIS
 
@@ -548,7 +548,7 @@ Defaults to DOCTYPE_HTML5.
 =item * B<encoding>
 
 This module always returns strings in Perl's internal utf8
-encoding, but if you can set the 'encoding' option to
+encoding, but you can set the 'encoding' option to
 'ascii' to create output that would be suitable for re-encoding
 to ASCII (e.g. it will entity-encode characters which do not
 exist in ASCII).
@@ -585,9 +585,17 @@ can be expressed in decimal or hexadecimal. Setting this option to
 
 =over 4
 
+=item C<< $writer->is_xhtml >>
+
+Boolean indicating if $writer is configured to output XHTML.
+
+=item C<< $writer->is_polyglot >>
+
+Boolean indicating if $writer is configured to output polyglot HTML.
+
 =item C<< $writer->document($node) >>
 
-Outputs an XML::LibXML::Document as HTML.
+Outputs (i.e. returns a string that is) an XML::LibXML::Document as HTML.
 
 =item C<< $writer->element($node) >>
 
@@ -613,17 +621,48 @@ Outputs an XML::LibXML::Comment as HTML.
 
 Outputs the writer's DOCTYPE.
 
-=item C<< $writer->is_xhtml >>
+=item C<< $writer->encode_entities($string, characters=>$more) >>
 
-Boolean indicating if $writer is configured to output XHTML.
+Takes a string and returns the same string with some special characters
+replaced. These special characters do not include any of '&', '<', '>'
+or '"', but you can provide a string of additional characters to treat as
+special:
 
-=item C<< $writer->is_polyglot >>
+ $encoded = $writer->encode_entities($raw, characters=>'&<>"');
 
-Boolean indicating if $writer is configured to output polyglot HTML.
+=item C<< $writer->encode_entity($char) >>
+
+Returns $char entity-encoded. Encoding is done regardless of whether 
+$char is "special" or not.
 
 =back
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
+
+Certain DOM constructs cannot be output in non-XML HTML. e.g.
+
+ my $xhtml = <<XHTML;
+ <html xmlns="http://www.w3.org/1999/xhtml">
+  <head><title>Test</title></head>
+  <body><hr>This text is within the HR element</hr></body>
+ </html>
+ XHTML
+ my $dom    = XML::LibXML->new->parse_string($xhtml);
+ my $writer = HTML::HTML5::Writer->new(markup=>'html');
+ print $writer->document($dom);
+
+In HTML, there's no way to serialise that properly in HTML. Right
+now this module just outputs that HR element with text contained
+within it, a la XHTML. In future versions, it may emit a warning
+or throw an error.
+
+In these cases, the HTML::HTML5::{Parser,Writer} combination is
+not round-trippable.
+
+Outputting elements and attributes in foreign (non-XHTML)
+namespaces is implemented pretty naively and not thoroughly
+tested. I'd be interested in any feedback people have, especially
+on round-trippability of SVG, MathML and RDFa content in HTML.
 
 Please report any bugs to L<http://rt.cpan.org/>.
 

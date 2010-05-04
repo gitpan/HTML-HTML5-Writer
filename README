@@ -2,7 +2,7 @@ NAME
     HTML::HTML5::Writer - output a DOM as HTML5
 
 VERISON
-    0.01
+    0.02
 
 SYNOPSIS
      use HTML::HTML5::Writer;
@@ -44,7 +44,7 @@ DESCRIPTION
         *   encoding
 
             This module always returns strings in Perl's internal utf8
-            encoding, but if you can set the 'encoding' option to 'ascii' to
+            encoding, but you can set the 'encoding' option to 'ascii' to
             create output that would be suitable for re-encoding to ASCII
             (e.g. it will entity-encode characters which do not exist in
             ASCII).
@@ -76,8 +76,15 @@ DESCRIPTION
             'dec' or 'hex' allows you to choose. The default is 'hex'.
 
   Public Methods
+    "$writer->is_xhtml"
+        Boolean indicating if $writer is configured to output XHTML.
+
+    "$writer->is_polyglot"
+        Boolean indicating if $writer is configured to output polyglot HTML.
+
     "$writer->document($node)"
-        Outputs an XML::LibXML::Document as HTML.
+        Outputs (i.e. returns a string that is) an XML::LibXML::Document as
+        HTML.
 
     "$writer->element($node)"
         Outputs an XML::LibXML::Element as HTML.
@@ -97,13 +104,43 @@ DESCRIPTION
     "$writer->doctype"
         Outputs the writer's DOCTYPE.
 
-    "$writer->is_xhtml"
-        Boolean indicating if $writer is configured to output XHTML.
+    "$writer->encode_entities($string, characters=>$more)"
+        Takes a string and returns the same string with some special
+        characters replaced. These special characters do not include any of
+        '&', '<', '>' or '"', but you can provide a string of additional
+        characters to treat as special:
 
-    "$writer->is_polyglot"
-        Boolean indicating if $writer is configured to output polyglot HTML.
+         $encoded = $writer->encode_entities($raw, characters=>'&<>"');
 
-BUGS
+    "$writer->encode_entity($char)"
+        Returns $char entity-encoded. Encoding is done regardless of whether
+        $char is "special" or not.
+
+BUGS AND LIMITATIONS
+    Certain DOM constructs cannot be output in non-XML HTML. e.g.
+
+     my $xhtml = <<XHTML;
+     <html xmlns="http://www.w3.org/1999/xhtml">
+      <head><title>Test</title></head>
+      <body><hr>This text is within the HR element</hr></body>
+     </html>
+     XHTML
+     my $dom    = XML::LibXML->new->parse_string($xhtml);
+     my $writer = HTML::HTML5::Writer->new(markup=>'html');
+     print $writer->document($dom);
+
+    In HTML, there's no way to serialise that properly in HTML. Right now
+    this module just outputs that HR element with text contained within it,
+    a la XHTML. In future versions, it may emit a warning or throw an error.
+
+    In these cases, the HTML::HTML5::{Parser,Writer} combination is not
+    round-trippable.
+
+    Outputting elements and attributes in foreign (non-XHTML) namespaces is
+    implemented pretty naively and not thoroughly tested. I'd be interested
+    in any feedback people have, especially on round-trippability of SVG,
+    MathML and RDFa content in HTML.
+
     Please report any bugs to <http://rt.cpan.org/>.
 
 SEE ALSO

@@ -14,14 +14,14 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 b186dd960458470586d2b6ab9d4db997075af1b2 Changes
-SHA1 db80e60b00543bdfa01eac34dc3a528a84da4822 Changes.ttl
-SHA1 b14522d64eee3c29d5686e8b342cc24806762f3e Changes.xml
+SHA1 ff722ad9673a18a6ff3ce4a6e4d55729faa85c84 Changes
+SHA1 2a547abb53e082c0e337d7624a72c6c3f80a34ab Changes.ttl
+SHA1 6058c1f4da89ba2158a7550c4353f44f72c38112 Changes.xml
 SHA1 ee1196d582f3bbd3079abad2c38177c8ec2657bc MANIFEST
 SHA1 354096507daf87ed4425cbff4f7aba6cf5bae921 MANIFEST.SKIP
-SHA1 b491761f037caca0f24fbb542f79d01defb8f093 META.yml
-SHA1 03437991daf043948262ede88785f3feefe153d0 Makefile.PL
-SHA1 d1ba2cffaa8aecb74472ec55350c8024a71d633a README
+SHA1 d33f40b7f236f2d54b61ea43a3b97f946d543dc5 META.yml
+SHA1 92d26803f4e5c1fcfd2c7483c0dd4547ddf65f8c Makefile.PL
+SHA1 71cb519faf261e68e28ff97face5759c061db11f README
 SHA1 8842ca38ce27ccf75e1ce8f5dfb93fa62d933b2e inc/Module/AutoInstall.pm
 SHA1 1ebec4119486a032a5612a403e8d7b7be973e938 inc/Module/Install.pm
 SHA1 bec3c7f9af6e1a3cb4d143249956c98af30f0552 inc/Module/Install/AutoInstall.pm
@@ -36,13 +36,13 @@ SHA1 a615bb050ca0b2d79bfa0224addcb83019a53b09 inc/Module/Install/ReadmeFromPod.p
 SHA1 5c25f1104c0038041e3b93e0660c39171e4caf2b inc/Module/Install/Win32.pm
 SHA1 94d47349c803c4bd2a9230d25e4db0b6aaf1acd8 inc/Module/Install/WriteAll.pm
 SHA1 1e6399a0585817abef500c34fce676fb9b0545f0 inc/Test/Signature.pm
-SHA1 502b2899aeeaac05ca8cbdd7b2b59db14f426c87 lib/HTML/HTML5/Writer.pm
+SHA1 a8b6928b0dd53eca1d4919c1b17e8d6a370b0695 lib/HTML/HTML5/Writer.pm
 SHA1 bb128dce2db8ad397dbeb957d79d084cc5d2391a t/00sig.t
 SHA1 9b6142ff41323680ad5d367dd2d6a71259fdce6b t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkveAG8ACgkQzr+BKGoqfTmA0gCdEdNjJtNAGS5AoGSpNpijPDqw
-+isAn16rdtbb4DbceeyK25bJkirX9EbR
-=xEpK
+iEYEARECAAYFAkvgQfcACgkQzr+BKGoqfTkViQCfS8UkcnDBuSJP33b2A3MX3QVL
+UqwAniGyhZi/mz0aqQdDmFVu6frZaSeZ
+=lp1k
 -----END PGP SIGNATURE-----
