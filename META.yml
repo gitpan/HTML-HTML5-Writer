@@ -32,4 +32,4 @@ resources:
   homepage: http://search.cpan.org/dist/HTML-HTML5-Writer/
   license: http://dev.perl.org/licenses/
   repository: http://goddamn.co.uk/viewvc/perlmods/HTML-HTML5-Writer/
-version: 0.02
+version: 0.03

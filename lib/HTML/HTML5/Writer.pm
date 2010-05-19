@@ -17,7 +17,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA  => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">' ,
 	};
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 our %EXPORT_TAGS = (
 	'doctype' => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4
@@ -244,7 +244,7 @@ sub comment
 sub cdata
 {
 	my ($self, $text) = @_;
-	if (!$self->is_xhtml && $text->parentNode->nodeName =~ /(script|style)/i)
+	if (!$self->is_xhtml && $text->parentNode->nodeName =~ /^(script|style)$/i)
 	{
 		return $text->nodeValue;
 	}
@@ -261,6 +261,14 @@ sub cdata
 sub text
 {
 	my ($self, $text) = @_;
+	if (!$self->is_xhtml && $text->parentNode->nodeName =~ /^(script|style)$/i)
+	{
+		return $text->nodeValue;
+	}
+	elsif ($text->parentNode->nodeName =~ /^(script|style)$/i)
+	{
+		return '<![CDATA[' . $text->nodeValue . ']]>';
+	}
 	return $self->encode_entities($text->nodeValue,
 		characters => "<>");
 }
@@ -271,7 +279,7 @@ sub encode_entities
 	
 	my $characters = $options{'characters'};
 	$characters   .= '&';
-	$characters   .= '\x{0}-\x{9}\x{B}\x{C}\x{E}-\x{1F}\x{26}\x{7F}';
+	$characters   .= '\x{0}-\x{8}\x{B}\x{C}\x{E}-\x{1F}\x{26}\x{7F}';
 	$characters   .= '\x{80}-\x{FFFFFF}' unless $self->{'charset'} =~ /^utf[_-]?8$/i;
 
 	$string =~ s/ ([$characters]) / $self->encode_entity($1) /egx;
@@ -498,7 +506,7 @@ HTML::HTML5::Writer - output a DOM as HTML5
 
 =head1 VERISON
 
-0.02
+0.03
 
 =head1 SYNOPSIS
 
