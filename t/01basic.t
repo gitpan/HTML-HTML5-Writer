@@ -51,7 +51,7 @@ p { foo: "€"; }
 ]]></style>
 </head><body><br foo="nar" />
 <!-- ffooo-->
-<p bim='"' quux="xyzzy" hidden="" bum="/bat/">foo &#26; €</p><p>foo</p>
+<p bim='"' quux="xyzzy" hidden="" bum="/bat/">foo &amp; €</p><p>foo</p>
 <table>
 <thead>
 <tr><th></th><th>

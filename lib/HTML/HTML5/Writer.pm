@@ -17,7 +17,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA  => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">' ,
 	};
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 our %EXPORT_TAGS = (
 	'doctype' => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4
@@ -244,7 +244,11 @@ sub comment
 sub cdata
 {
 	my ($self, $text) = @_;
-	if (!$self->is_xhtml && $text->parentNode->nodeName =~ /^(script|style)$/i)
+	if ($self->is_polyglot && $text->parentNode->nodeName =~ /^(script|style)$/i)
+	{
+		return '/* <![CDATA[ */' . $text->nodeValue . '/* ]]> */';
+	}
+	elsif (!$self->is_xhtml && $text->parentNode->nodeName =~ /^(script|style)$/i)
 	{
 		return $text->nodeValue;
 	}
@@ -261,7 +265,11 @@ sub cdata
 sub text
 {
 	my ($self, $text) = @_;
-	if (!$self->is_xhtml && $text->parentNode->nodeName =~ /^(script|style)$/i)
+	if ($self->is_polyglot && $text->parentNode->nodeName =~ /^(script|style)$/i)
+	{
+		return '/* <![CDATA[ */' . $text->nodeValue . '/* ]]> */';
+	}
+	elsif (!$self->is_xhtml && $text->parentNode->nodeName =~ /^(script|style)$/i)
 	{
 		return $text->nodeValue;
 	}
@@ -291,8 +299,13 @@ sub encode_entity
 {
 	my ($self, $char) = @_;
 	return unless defined $char;
+	
+	if (length $char > 1)
+	{
+		return encode_entity(substr $char, 0, 1).encode_entity(substr $char, 1);
+	}
 
-	if ($char =~ /&<>"/)
+	if ($char =~ /^[&<>"]$/)
 	{
 		return '&' . $Entities{$char};
 	}
@@ -305,7 +318,7 @@ sub encode_entity
 		return sprintf('&#%d;', ord $char);
 	}
 
-	return sprintf('&#%x;', ord $char);
+	return sprintf('&#x%x;', ord $char);
 }
 
 sub _check_omit_end_body
@@ -506,7 +519,7 @@ HTML::HTML5::Writer - output a DOM as HTML5
 
 =head1 VERISON
 
-0.03
+0.04
 
 =head1 SYNOPSIS
 

@@ -52,7 +52,7 @@
         </dcs:item>
         <dcs:item>
           <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Don't need to entity-encode tab characters!</rdfs:label>
+            <rdfs:label xml:lang="en">Don't usually need to entity-encode tab characters!</rdfs:label>
           </dcs:Bugfix>
         </dcs:item>
         <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
@@ -61,6 +61,31 @@
     <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-19</dc:issued>
     <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.03.tar.gz"/>
     <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.03</revision>
+  </Version>
+  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04">
+    <dcs:changeset>
+      <rdf:Description>
+        <dcs:item>
+          <dcs:Bugfix>
+            <rdfs:label xml:lang="en">Handle &lt;script&gt; and &lt;style&gt; elements even better.</rdfs:label>
+          </dcs:Bugfix>
+        </dcs:item>
+        <dcs:item>
+          <dcs:Bugfix>
+            <rdfs:label xml:lang="en">Use XML predefined entities for &amp;, &lt;, etc.</rdfs:label>
+          </dcs:Bugfix>
+        </dcs:item>
+        <dcs:item>
+          <dcs:Bugfix>
+            <rdfs:label xml:lang="en">Include the 'x' in hexadecimal numeric character references.</rdfs:label>
+          </dcs:Bugfix>
+        </dcs:item>
+        <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
+      </rdf:Description>
+    </dcs:changeset>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-21</dc:issued>
+    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.04.tar.gz"/>
+    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.04</revision>
   </Version>
   <Project rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/project">
     <bug-database rdf:resource="http://rt.cpan.org/Dist/Display.html?Queue=HTML-HTML5-Writer"/>
@@ -76,6 +101,7 @@
     <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01"/>
     <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
     <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
+    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
     <repository>
       <SVNRepository>
         <browse rdf:resource="http://goddamn.co.uk/viewvc/perlmods/HTML-HTML5-Writer/"/>
