@@ -10,9 +10,12 @@ Home page:    <http://search.cpan.org/dist/HTML-HTML5-Writer/>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=HTML-HTML5-Writer>
 Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
 
+0.100 [2010-06-23]
+ - (Bugfix) Document 'charset' option properly.
+
 0.04 [2010-05-21]
- - (Bugfix) Handle <script> and <style> elements even better.
  - (Bugfix) Include the 'x' in hexadecimal numeric character references.
+ - (Bugfix) Handle <script> and <style> elements even better.
  - (Bugfix) Use XML predefined entities for &, <, etc.
 
 0.03 [2010-05-19]

@@ -65,7 +65,18 @@ my:v_0-04
 		dcs:item [ rdfs:label "Use XML predefined entities for &, <, etc."@en ; a dcs:Bugfix ] ;
 		dcs:item [ rdfs:label "Include the 'x' in hexadecimal numeric character references."@en ; a dcs:Bugfix ]
 		] .
-		
+
+my:v_0-100
+
+	a               :Version ;
+	dc:issued       "2010-06-23"^^xsd:date ;
+	:revision       "0.100"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.100.tar.gz> ;
+	dcs:changeset [
+		dcs:versus my:v_0-04 ;
+		dcs:item [ rdfs:label "Document 'charset' option properly."@en ; a dcs:Bugfix ]
+		] .
+
 #############################################################
 
 my:project
@@ -84,7 +95,8 @@ my:project
 	:tester         toby:i ;
 	:created        "2010-05-02"^^xsd:date ;
 	:license        <http://dev.perl.org/licenses/> ;
-	:release        my:v_0-01 , my:v_0-02 , my:v_0-03 , my:v_0-04 .
+	:release        my:v_0-01 , my:v_0-02 , my:v_0-03 , my:v_0-04 ,
+	                my:v_0-100 .
 
 #############################################################
 

@@ -2,7 +2,7 @@ NAME
     HTML::HTML5::Writer - output a DOM as HTML5
 
 VERISON
-    0.04
+    0.100
 
 SYNOPSIS
      use HTML::HTML5::Writer;
@@ -41,10 +41,10 @@ DESCRIPTION
 
             Defaults to DOCTYPE_HTML5.
 
-        *   encoding
+        *   charset
 
             This module always returns strings in Perl's internal utf8
-            encoding, but you can set the 'encoding' option to 'ascii' to
+            encoding, but you can set the 'charset' option to 'ascii' to
             create output that would be suitable for re-encoding to ASCII
             (e.g. it will entity-encode characters which do not exist in
             ASCII).

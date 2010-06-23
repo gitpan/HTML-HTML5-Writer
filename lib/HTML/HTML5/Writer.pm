@@ -17,7 +17,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA  => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">' ,
 	};
 
-our $VERSION = '0.04';
+our $VERSION = '0.100';
 
 our %EXPORT_TAGS = (
 	'doctype' => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4
@@ -519,7 +519,7 @@ HTML::HTML5::Writer - output a DOM as HTML5
 
 =head1 VERISON
 
-0.04
+0.100
 
 =head1 SYNOPSIS
 
@@ -566,10 +566,10 @@ DOCTYPE_XHTML_BASIC, DOCTYPE_XHTML_RDFA.
 
 Defaults to DOCTYPE_HTML5.
 
-=item * B<encoding>
+=item * B<charset>
 
 This module always returns strings in Perl's internal utf8
-encoding, but you can set the 'encoding' option to
+encoding, but you can set the 'charset' option to
 'ascii' to create output that would be suitable for re-encoding
 to ASCII (e.g. it will entity-encode characters which do not
 exist in ASCII).
