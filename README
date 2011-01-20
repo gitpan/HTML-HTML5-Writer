@@ -1,9 +1,6 @@
 NAME
     HTML::HTML5::Writer - output a DOM as HTML5
 
-VERISON
-    0.100
-
 SYNOPSIS
      use HTML::HTML5::Writer;
  
@@ -35,9 +32,20 @@ DESCRIPTION
             how the rest of the document is output.
 
             The following constants are provided for convenience:
-            DOCTYPE_HTML5, DOCTYPE_LEGACY, DOCTYPE_NIL, DOCTYPE_HTML32,
-            DOCTYPE_HTML4, DOCTYPE_XHTML1, DOCTYPE_XHTML11,
-            DOCTYPE_XHTML_BASIC, DOCTYPE_XHTML_RDFA.
+            DOCTYPE_HTML2, DOCTYPE_HTML32, DOCTYPE_HTML4 (latest stable
+            strict HTML 4.x), DOCTYPE_HTML4_RDFA (latest stable HTML
+            4.x+RDFa), DOCTYPE_HTML40 (strict), DOCTYPE_HTML40_FRAMESET,
+            DOCTYPE_HTML40_LOOSE, DOCTYPE_HTML40_STRICT, DOCTYPE_HTML401
+            (strict), DOCTYPE_HTML401_FRAMESET, DOCTYPE_HTML401_LOOSE,
+            DOCTYPE_HTML401_RDFA10, DOCTYPE_HTML401_RDFA11,
+            DOCTYPE_HTML401_STRICT, DOCTYPE_HTML5, DOCTYPE_LEGACY
+            (about:legacy-compat), DOCTYPE_NIL (empty string),
+            DOCTYPE_XHTML1 (strict), DOCTYPE_XHTML1_FRAMESET,
+            DOCTYPE_XHTML1_LOOSE, DOCTYPE_XHTML1_STRICT, DOCTYPE_XHTML11,
+            DOCTYPE_XHTML_BASIC, DOCTYPE_XHTML_BASIC_10,
+            DOCTYPE_XHTML_BASIC_11, DOCTYPE_XHTML_MATHML_SVG,
+            DOCTYPE_XHTML_RDFA (latest stable strict XHTML+RDFa),
+            DOCTYPE_XHTML_RDFA10, DOCTYPE_XHTML_RDFA11.
 
             Defaults to DOCTYPE_HTML5.
 
@@ -151,7 +159,7 @@ AUTHOR
     Toby Inkster <tobyink@cpan.org>.
 
 COPYRIGHT AND LICENSE
-    Copyright (C) 2010 by Toby Inkster
+    Copyright (C) 2010-2011 by Toby Inkster
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself, either Perl version 5.8 or, at your

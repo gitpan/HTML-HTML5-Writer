@@ -5,11 +5,12 @@ author:
 build_requires:
   ExtUtils::MakeMaker: 6.42
   HTML::HTML5::Parser: 0
+  Module::Signature: 0.66
   Test::More: 0.61
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.95'
+generated_by: 'Module::Install version 1.00'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,7 +21,7 @@ no_index:
     - inc
     - t
 recommends:
-  HTML::HTML5::Parser: 0
+  HTML::HTML5::Parser: 0.102
   HTML::HTML5::Sanity: 0
 requires:
   Exporter: 0
@@ -32,4 +33,4 @@ resources:
   homepage: http://search.cpan.org/dist/HTML-HTML5-Writer/
   license: http://dev.perl.org/licenses/
   repository: http://goddamn.co.uk/viewvc/perlmods/HTML-HTML5-Writer/
-version: 0.100
+version: 0.101

@@ -1,136 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF
-   xmlns:dc="http://purl.org/dc/terms/"
-   xmlns:dcs="http://ontologi.es/doap-changeset#"
-   xmlns:foaf="http://xmlns.com/foaf/0.1/"
-   xmlns:my="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-   xmlns:toby="http://tobyinkster.co.uk/#"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-   xmlns="http://usefulinc.com/ns/doap#">
-  <rdf:Description rdf:about="file:///home/tai/src/perlmods/HTML-HTML5-Writer/Changes.ttl">
-    <dc:creator rdf:resource="http://tobyinkster.co.uk/#i"/>
-    <dc:description xml:lang="en">Revision history for Perl extension HTML::HTML5::Writer.</dc:description>
-    <dc:subject rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/project"/>
-    <dc:title xml:lang="en">Changes</dc:title>
-  </rdf:Description>
-  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01">
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-02</dc:issued>
-    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.01.tar.gz"/>
-    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.01</revision>
-    <rdfs:label xml:lang="en">First release</rdfs:label>
-  </Version>
-  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02">
-    <dcs:changeset>
-      <rdf:Description>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Makefile.PL should specify that we need common::sense.</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:item>
-          <rdf:Description>
-            <rdfs:label xml:lang="en">Improve documentation.</rdfs:label>
-          </rdf:Description>
-        </dcs:item>
-        <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01"/>
-      </rdf:Description>
-    </dcs:changeset>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-04</dc:issued>
-    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.02.tar.gz"/>
-    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02</revision>
-    <rdfs:label xml:lang="en">Star Wars Day!</rdfs:label>
-  </Version>
-  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03">
-    <dcs:changeset>
-      <rdf:Description>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Handle &lt;script&gt; and &lt;style&gt; elements better.</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Don't usually need to entity-encode tab characters!</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
-      </rdf:Description>
-    </dcs:changeset>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-19</dc:issued>
-    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.03.tar.gz"/>
-    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.03</revision>
-  </Version>
-  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04">
-    <dcs:changeset>
-      <rdf:Description>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Handle &lt;script&gt; and &lt;style&gt; elements even better.</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Use XML predefined entities for &amp;, &lt;, etc.</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Include the 'x' in hexadecimal numeric character references.</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
-      </rdf:Description>
-    </dcs:changeset>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-21</dc:issued>
-    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.04.tar.gz"/>
-    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.04</revision>
-  </Version>
-  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100">
-    <dcs:changeset>
-      <rdf:Description>
-        <dcs:item>
-          <dcs:Bugfix>
-            <rdfs:label xml:lang="en">Document 'charset' option properly.</rdfs:label>
-          </dcs:Bugfix>
-        </dcs:item>
-        <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
-      </rdf:Description>
-    </dcs:changeset>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-23</dc:issued>
-    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.100.tar.gz"/>
-    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.100</revision>
-  </Version>
-  <Project rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/project">
-    <bug-database rdf:resource="http://rt.cpan.org/Dist/Display.html?Queue=HTML-HTML5-Writer"/>
-    <created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-02</created>
-    <developer rdf:resource="http://tobyinkster.co.uk/#i"/>
-    <documenter rdf:resource="http://tobyinkster.co.uk/#i"/>
-    <download-page rdf:resource="http://search.cpan.org/dist/HTML-HTML5-Writer/"/>
-    <homepage rdf:resource="http://search.cpan.org/dist/HTML-HTML5-Writer/"/>
-    <license rdf:resource="http://dev.perl.org/licenses/"/>
-    <maintainer rdf:resource="http://tobyinkster.co.uk/#i"/>
-    <name>HTML-HTML5-Writer</name>
-    <programming-language>Perl</programming-language>
-    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01"/>
-    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
-    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
-    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
-    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100"/>
-    <repository>
-      <SVNRepository>
-        <browse rdf:resource="http://goddamn.co.uk/viewvc/perlmods/HTML-HTML5-Writer/"/>
-      </SVNRepository>
-    </repository>
-    <shortdesc xml:lang="en">output a DOM as HTML5</shortdesc>
-    <tester rdf:resource="http://tobyinkster.co.uk/#i"/>
-  </Project>
-  <foaf:Person rdf:about="http://tobyinkster.co.uk/#i">
-    <ns1:sameAs xmlns:ns1="http://www.w3.org/2002/07/owl#" rdf:resource="http://purl.org/NET/cpan-uri/person/tobyink"/>
-    <foaf:homepage rdf:resource="http://tobyinkster.co.uk/"/>
-    <foaf:mbox rdf:resource="mailto:tobyink@cpan.org"/>
-    <foaf:name>Toby Inkster</foaf:name>
-    <foaf:page rdf:resource="http://search.cpan.org/~tobyink/"/>
-  </foaf:Person>
+<rdf:RDF xmlns:dbug="http://ontologi.es/doap-bugs#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcs="http://ontologi.es/doap-changeset#" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r0">
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r1"/>
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r2"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r1">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Makefile.PL should specify that we need common::sense.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r10">
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r11"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r11">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Document 'charset' option properly.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r12">
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r13"/>
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r14"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r13">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Addition"/>
+	<rdfs:label xml:lang="en">More DOCTYPE_* constants are now available.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r14">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Update"/>
+	<rdfs:label xml:lang="en">Add support for &lt;track> element.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r15">
+	<doap:browse rdf:resource="http://goddamn.co.uk/viewvc/perlmods/HTML-HTML5-Writer/"/>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#SVNRepository"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r2">
+	<rdfs:label xml:lang="en">Improve documentation.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r3">
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r4"/>
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r5"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r4">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Handle &lt;script> and &lt;style> elements better.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r5">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Don't usually need to entity-encode tab characters!</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r6">
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r7"/>
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r8"/>
+	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r9"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r7">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Handle &lt;script> and &lt;style> elements even better.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r8">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Use XML predefined entities for &amp;, &lt;, etc.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r9">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:label xml:lang="en">Include the 'x' in hexadecimal numeric character references.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:about="file:///home/tai/src/perlmods/HTML-HTML5-Writer/Changes.ttl">
+	<dc:creator rdf:resource="http://tobyinkster.co.uk/#i"/>
+	<dc:description xml:lang="en">Revision history for Perl extension HTML::HTML5::Writer.</dc:description>
+	<dc:subject rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/project"/>
+	<dc:title xml:lang="en">Changes</dc:title>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/project">
+	<doap:bug-database rdf:resource="http://rt.cpan.org/Dist/Display.html?Queue=HTML-HTML5-Writer"/>
+	<doap:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-02</doap:created>
+	<doap:developer rdf:resource="http://tobyinkster.co.uk/#i"/>
+	<doap:documenter rdf:resource="http://tobyinkster.co.uk/#i"/>
+	<doap:download-page rdf:resource="http://search.cpan.org/dist/HTML-HTML5-Writer/"/>
+	<doap:homepage rdf:resource="http://search.cpan.org/dist/HTML-HTML5-Writer/"/>
+	<doap:license rdf:resource="http://dev.perl.org/licenses/"/>
+	<doap:maintainer rdf:resource="http://tobyinkster.co.uk/#i"/>
+	<doap:name>HTML-HTML5-Writer</doap:name>
+	<doap:programming-language>Perl</doap:programming-language>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-101"/>
+	<doap:repository rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r15"/>
+	<doap:shortdesc xml:lang="en">output a DOM as HTML5</doap:shortdesc>
+	<doap:tester rdf:resource="http://tobyinkster.co.uk/#i"/>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Project"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01">
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-02</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.01.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.01</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+	<rdfs:label xml:lang="en">First release</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02">
+	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r0"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-04</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.02.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+	<rdfs:label xml:lang="en">Star Wars Day!</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03">
+	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r3"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-19</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.03.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.03</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04">
+	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r6"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-21</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.04.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.04</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100">
+	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r10"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-23</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.100.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.100</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-101">
+	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r12"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-01-20</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.101.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.101</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+</rdf:Description>
+<rdf:Description xmlns:ns1="http://www.w3.org/2002/07/owl#" rdf:about="http://tobyinkster.co.uk/#i">
+	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+	<ns1:sameAs rdf:resource="http://purl.org/NET/cpan-uri/person/tobyink"/>
+	<foaf:homepage rdf:resource="http://tobyinkster.co.uk/"/>
+	<foaf:mbox rdf:resource="mailto:tobyink@cpan.org"/>
+	<foaf:name>Toby Inkster</foaf:name>
+	<foaf:page rdf:resource="http://search.cpan.org/~tobyink/"/>
+</rdf:Description>
 </rdf:RDF>

@@ -6,38 +6,85 @@ use common::sense;
 use XML::LibXML qw':all';
 
 use constant {
-	DOCTYPE_NIL         => '' ,
-	DOCTYPE_HTML32      => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">' ,
-	DOCTYPE_HTML4       => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">' ,
-	DOCTYPE_HTML5       => '<!DOCTYPE html>' ,
-	DOCTYPE_LEGACY      => '<!DOCTYPE html SYSTEM "about:legacy-compat">' ,
-	DOCTYPE_XHTML1      => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' ,
-	DOCTYPE_XHTML11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">' ,
-	DOCTYPE_XHTML_BASIC => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">' ,
-	DOCTYPE_XHTML_RDFA  => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">' ,
+	DOCTYPE_NIL              => '',
+	DOCTYPE_HTML32           => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">',
+	DOCTYPE_HTML4            => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
+	DOCTYPE_HTML5            => '<!DOCTYPE html>',
+	DOCTYPE_LEGACY           => '<!DOCTYPE html SYSTEM "about:legacy-compat">',
+	DOCTYPE_XHTML1           => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+	DOCTYPE_XHTML11          => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">',
+	DOCTYPE_XHTML_BASIC      => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">',
+	DOCTYPE_XHTML_RDFA       => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">',
+	DOCTYPE_HTML2            => '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">',
+	DOCTYPE_HTML40           => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/strict.dtd">',
+	DOCTYPE_HTML40_STRICT    => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/strict.dtd">',
+	DOCTYPE_HTML40_LOOSE     => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">',
+	DOCTYPE_HTML40_FRAMESET  => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/frameset.dtd">',
+	DOCTYPE_HTML401          => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
+	DOCTYPE_HTML401_STRICT   => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
+	DOCTYPE_HTML401_LOOSE    => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
+	DOCTYPE_HTML401_FRAMESET => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',
+	DOCTYPE_XHTML1_STRICT    => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+	DOCTYPE_XHTML1_LOOSE     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
+	DOCTYPE_XHTML1_FRAMESET  => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
+	DOCTYPE_XHTML_MATHML_SVG => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">',
+	DOCTYPE_XHTML_BASIC_10   => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.0//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd">',
+	DOCTYPE_XHTML_BASIC_11   => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">',
+	DOCTYPE_HTML4_RDFA       => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/html401-rdfa11-1.dtd">',
+	DOCTYPE_HTML401_RDFA11   => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/html401-rdfa11-1.dtd">',
+	DOCTYPE_HTML401_RDFA10   => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/html401-rdfa-1.dtd">',
+	DOCTYPE_XHTML_RDFA10     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">',
+	DOCTYPE_XHTML_RDFA11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
 	};
 
-our $VERSION = '0.100';
+our $VERSION = '0.101';
 
 our %EXPORT_TAGS = (
-	'doctype' => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4
-		DOCTYPE_HTML5 DOCTYPE_LEGACY DOCTYPE_XHTML1 DOCTYPE_XHTML11
-		DOCTYPE_XHTML_BASIC DOCTYPE_XHTML_RDFA)]
+	doctype => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4 DOCTYPE_HTML5
+		DOCTYPE_LEGACY DOCTYPE_XHTML1 DOCTYPE_XHTML11 DOCTYPE_XHTML_BASIC
+		DOCTYPE_XHTML_RDFA DOCTYPE_HTML2 DOCTYPE_HTML40 DOCTYPE_HTML40_STRICT
+		DOCTYPE_HTML40_LOOSE DOCTYPE_HTML40_FRAMESET DOCTYPE_HTML401
+		DOCTYPE_HTML401_STRICT DOCTYPE_HTML401_LOOSE DOCTYPE_HTML401_FRAMESET
+		DOCTYPE_XHTML1_STRICT DOCTYPE_XHTML1_LOOSE DOCTYPE_XHTML1_FRAMESET
+		DOCTYPE_XHTML_MATHML_SVG DOCTYPE_XHTML_BASIC_10 DOCTYPE_XHTML_BASIC_11
+		DOCTYPE_HTML4_RDFA DOCTYPE_HTML401_RDFA11 DOCTYPE_HTML401_RDFA10
+		DOCTYPE_XHTML_RDFA10 DOCTYPE_XHTML_RDFA11)]
 	);
-our @EXPORT_OK = @{ $EXPORT_TAGS{'doctype'} };
+our @EXPORT_OK = @{ $EXPORT_TAGS{doctype} };
 
 our %Entities;
-our @VoidElements = qw(area base br col command embed hr img input keygen
-	link meta param source wbr);
-our @BooleanAttributes = qw(hidden autofocus disabled checked selected
-	formnovalidate multiple readonly required details@open dl@compact
+our @VoidElements = qw(area base br col command embed hr
+	img input keygen link meta param source track wbr);
+our @BooleanAttributes = qw(
+	hidden
 	audio@autoplay audio@preload audio@controls audio@loop
-	form@novalidate hr@noshade iframe@seamless img@ismap ol@reversed
-	script@async script@defer style@scoped time@pubdate
-	video@autoplay video@preload video@controls video@loop);
+	button@autofocus button@disabled button@formnovalidate 
+	command@checked command@disabled
+	details@open
+	dl@compact
+	fieldset@disabled
+	form@novalidate
+	hr@noshade
+	iframe@seamless
+	img@ismap
+	input@autofocus input@checked input@disabled input@formnovalidate
+		input@multiple input@readonly input@required
+	keygen@autofocus keygen@disabled
+	ol@reversed
+	optgroup@disabled
+	option@disabled option@selected
+	script@async script@defer
+	select@autofocus select@disabled select@multiple select@readonly
+		select@required
+	style@scoped
+	textarea@autofocus textarea@disabled textarea@required
+	time@pubdate
+	track@default
+	video@autoplay video@preload video@controls video@loop
+	);
 our @OptionalStart = qw(html head body tbody);
-our @OptionalEnd = qw(html head body tbody dt dd li optgroup option p
-	rp rt td th tfoot thead tr);
+our @OptionalEnd = qw(html head body tbody dt dd li optgroup
+	option p rp rt td th tfoot thead tr);
 
 BEGIN
 {
@@ -517,10 +564,6 @@ __END__
 
 HTML::HTML5::Writer - output a DOM as HTML5
 
-=head1 VERISON
-
-0.100
-
 =head1 SYNOPSIS
 
  use HTML::HTML5::Writer;
@@ -560,9 +603,35 @@ Note, this purely sets the <!DOCTYPE> tag and does not change
 how the rest of the document is output.
 
 The following constants are provided for convenience:
-DOCTYPE_HTML5, DOCTYPE_LEGACY, DOCTYPE_NIL, DOCTYPE_HTML32,
-DOCTYPE_HTML4, DOCTYPE_XHTML1, DOCTYPE_XHTML11,
-DOCTYPE_XHTML_BASIC, DOCTYPE_XHTML_RDFA.
+B<DOCTYPE_HTML2>,
+B<DOCTYPE_HTML32>,
+B<DOCTYPE_HTML4> (latest stable strict HTML 4.x),
+B<DOCTYPE_HTML4_RDFA> (latest stable HTML 4.x+RDFa),
+B<DOCTYPE_HTML40> (strict),
+B<DOCTYPE_HTML40_FRAMESET>,
+B<DOCTYPE_HTML40_LOOSE>,
+B<DOCTYPE_HTML40_STRICT>,
+B<DOCTYPE_HTML401> (strict),
+B<DOCTYPE_HTML401_FRAMESET>,
+B<DOCTYPE_HTML401_LOOSE>,
+B<DOCTYPE_HTML401_RDFA10>,
+B<DOCTYPE_HTML401_RDFA11>,
+B<DOCTYPE_HTML401_STRICT>,
+B<DOCTYPE_HTML5>,
+B<DOCTYPE_LEGACY> (about:legacy-compat),
+B<DOCTYPE_NIL> (empty string),
+B<DOCTYPE_XHTML1> (strict),
+B<DOCTYPE_XHTML1_FRAMESET>,
+B<DOCTYPE_XHTML1_LOOSE>,
+B<DOCTYPE_XHTML1_STRICT>,
+B<DOCTYPE_XHTML11>,
+B<DOCTYPE_XHTML_BASIC>,
+B<DOCTYPE_XHTML_BASIC_10>,
+B<DOCTYPE_XHTML_BASIC_11>,
+B<DOCTYPE_XHTML_MATHML_SVG>,
+B<DOCTYPE_XHTML_RDFA> (latest stable strict XHTML+RDFa),
+B<DOCTYPE_XHTML_RDFA10>,
+B<DOCTYPE_XHTML_RDFA11>.
 
 Defaults to DOCTYPE_HTML5.
 
@@ -698,7 +767,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010 by Toby Inkster
+Copyright (C) 2010-2011 by Toby Inkster
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8 or,
