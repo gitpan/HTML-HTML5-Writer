@@ -34,7 +34,7 @@ p { foo: "€"; }
 </style>
 <br foo=nar>
 <!-- ffooo-->
-<p bim='"' quux=xyzzy hidden bum="/bat/">foo &amp; €<p>foo</p>
+<p bim='"' bum="/bat/" hidden quux=xyzzy>foo &amp; €<p>foo</p>
 <table>
 <thead>
 <tr><th><th>
@@ -51,7 +51,7 @@ p { foo: "€"; }
 ]]></style>
 </head><body><br foo="nar" />
 <!-- ffooo-->
-<p bim='"' quux="xyzzy" hidden="" bum="/bat/">foo &amp; €</p><p>foo</p>
+<p bim='"' bum="/bat/" hidden="" quux="xyzzy">foo &amp; €</p><p>foo</p>
 <table>
 <thead>
 <tr><th></th><th>

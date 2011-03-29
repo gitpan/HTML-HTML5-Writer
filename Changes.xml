@@ -1,70 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:dbug="http://ontologi.es/doap-bugs#" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcs="http://ontologi.es/doap-changeset#" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r0">
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r1"/>
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r2"/>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r0">
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r1"/>
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r2"/>
 	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-01"/>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r1">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r1">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Makefile.PL should specify that we need common::sense.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r10">
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r11"/>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r10">
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r11"/>
 	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r11">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r11">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Document 'charset' option properly.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r12">
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r13"/>
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r14"/>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r12">
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r13"/>
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r14"/>
 	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100"/>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r13">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r13">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Addition"/>
 	<rdfs:label xml:lang="en">More DOCTYPE_* constants are now available.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r14">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r14">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Update"/>
 	<rdfs:label xml:lang="en">Add support for &lt;track> element.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r15">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r15">
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r16"/>
+	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-101"/>
+</rdf:Description>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r16">
+	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
+	<rdfs:comment xml:lang="en">Caused by interaction with HTML5 parser.</rdfs:comment>
+	<rdfs:label xml:lang="en">Prevent elements from being output with duplicate attributes.</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r17">
 	<doap:browse rdf:resource="http://goddamn.co.uk/viewvc/perlmods/HTML-HTML5-Writer/"/>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#SVNRepository"/>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r2">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r2">
 	<rdfs:label xml:lang="en">Improve documentation.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r3">
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r4"/>
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r5"/>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r3">
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r4"/>
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r5"/>
 	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02"/>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r4">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r4">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Handle &lt;script> and &lt;style> elements better.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r5">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r5">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Don't usually need to entity-encode tab characters!</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r6">
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r7"/>
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r8"/>
-	<dcs:item rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r9"/>
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r6">
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r7"/>
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r8"/>
+	<dcs:item rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r9"/>
 	<dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03"/>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r7">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r7">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Handle &lt;script> and &lt;style> elements even better.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r8">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r8">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Use XML predefined entities for &amp;, &lt;, etc.</rdfs:label>
 </rdf:Description>
-<rdf:Description rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r9">
+<rdf:Description rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r9">
 	<rdf:type rdf:resource="http://ontologi.es/doap-changeset#Bugfix"/>
 	<rdfs:label xml:lang="en">Include the 'x' in hexadecimal numeric character references.</rdfs:label>
 </rdf:Description>
@@ -91,7 +100,8 @@
 	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04"/>
 	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100"/>
 	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-101"/>
-	<doap:repository rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r15"/>
+	<doap:release rdf:resource="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-102"/>
+	<doap:repository rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r17"/>
 	<doap:shortdesc xml:lang="en">output a DOM as HTML5</doap:shortdesc>
 	<doap:tester rdf:resource="http://tobyinkster.co.uk/#i"/>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Project"/>
@@ -104,7 +114,7 @@
 	<rdfs:label xml:lang="en">First release</rdfs:label>
 </rdf:Description>
 <rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-02">
-	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r0"/>
+	<dcs:changeset rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r0"/>
 	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-04</dc:issued>
 	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.02.tar.gz"/>
 	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02</doap:revision>
@@ -112,31 +122,38 @@
 	<rdfs:label xml:lang="en">Star Wars Day!</rdfs:label>
 </rdf:Description>
 <rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-03">
-	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r3"/>
+	<dcs:changeset rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r3"/>
 	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-19</dc:issued>
 	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.03.tar.gz"/>
 	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.03</doap:revision>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
 </rdf:Description>
 <rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-04">
-	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r6"/>
+	<dcs:changeset rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r6"/>
 	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-05-21</dc:issued>
 	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.04.tar.gz"/>
 	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.04</doap:revision>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
 </rdf:Description>
 <rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-100">
-	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r10"/>
+	<dcs:changeset rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r10"/>
 	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-23</dc:issued>
 	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.100.tar.gz"/>
 	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.100</doap:revision>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
 </rdf:Description>
 <rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-101">
-	<dcs:changeset rdf:nodeID="r9FF7CB8E247611E0935FB142F07613C7r12"/>
+	<dcs:changeset rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r12"/>
 	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-01-20</dc:issued>
 	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.101.tar.gz"/>
 	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.101</doap:revision>
+	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://purl.org/NET/cpan-uri/dist/HTML-HTML5-Writer/v_0-102">
+	<dcs:changeset rdf:nodeID="rB2A43F685A1F11E0B1CAD602187C8AD8r15"/>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-03-29</dc:issued>
+	<doap:file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.102.tar.gz"/>
+	<doap:revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.102</doap:revision>
 	<rdf:type rdf:resource="http://usefulinc.com/ns/doap#Version"/>
 </rdf:Description>
 <rdf:Description xmlns:ns1="http://www.w3.org/2002/07/owl#" rdf:about="http://tobyinkster.co.uk/#i">

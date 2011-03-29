@@ -37,7 +37,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
 	};
 
-our $VERSION = '0.101';
+our $VERSION = '0.102';
 
 our %EXPORT_TAGS = (
 	doctype => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4 DOCTYPE_HTML5
@@ -179,16 +179,16 @@ sub element
 	
 	my $rv = '';
 	my $tagname  = $element->nodeName;
-	my @attrs    = $element->attributes;
+	my %attrs    = map { $_->nodeName => $_ } $element->attributes;
 	my @kids     = $element->childNodes;
 
 	if ($tagname eq 'html' && !$self->is_xhtml && !$self->is_polyglot)
 	{
-		@attrs = grep { $_->nodeName ne 'xmlns' } @attrs;
+		delete $attrs{'xmlns'};
 	}
 
 	my $omitstart = 0;
-	if (!@attrs and !$self->should_force_start_tags and grep { $tagname eq $_ } @OptionalStart)
+	if (!%attrs and !$self->should_force_start_tags and grep { $tagname eq $_ } @OptionalStart)
 	{
 		$omitstart += eval "return \$self->_check_omit_start_${tagname}(\$element);";
 	}
@@ -202,9 +202,9 @@ sub element
 	unless ($omitstart)
 	{
 		$rv .= '<'.$tagname;
-		foreach my $a (@attrs)
+		foreach my $a (sort keys %attrs)
 		{
-			$rv .= ' '.$self->attribute($a, $element);
+			$rv .= ' '.$self->attribute($attrs{$a}, $element);
 		}
 	}
 	

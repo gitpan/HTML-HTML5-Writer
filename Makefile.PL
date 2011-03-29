@@ -19,7 +19,6 @@ requires            'Exporter'            => 0;
 recommends          'HTML::HTML5::Sanity' => 0;
 recommends          'HTML::HTML5::Parser' => '0.102';
 test_requires       'HTML::HTML5::Parser' => 0;
-test_requires       'Module::Signature'   => '0.66';
 test_requires       'Test::More'          => '0.61';
 requires            'XML::LibXML'         => '1.60';
 
