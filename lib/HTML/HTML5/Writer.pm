@@ -1,9 +1,10 @@
 package HTML::HTML5::Writer;
 
 use 5.008;
-use base qw'Exporter';
+use base qw[Exporter];
 use common::sense;
-use XML::LibXML qw':all';
+use HTML::HTML5::Entities 0.001 qw[];
+use XML::LibXML qw[:all];
 
 use constant {
 	DOCTYPE_NIL              => '',
@@ -37,7 +38,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
 	};
 
-our $VERSION = '0.102';
+our $VERSION = '0.103';
 
 our %EXPORT_TAGS = (
 	doctype => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4 DOCTYPE_HTML5
@@ -52,7 +53,6 @@ our %EXPORT_TAGS = (
 	);
 our @EXPORT_OK = @{ $EXPORT_TAGS{doctype} };
 
-our %Entities;
 our @VoidElements = qw(area base br col command embed hr
 	img input keygen link meta param source track wbr);
 our @BooleanAttributes = qw(
@@ -85,25 +85,6 @@ our @BooleanAttributes = qw(
 our @OptionalStart = qw(html head body tbody);
 our @OptionalEnd = qw(html head body tbody dt dd li optgroup
 	option p rp rt td th tfoot thead tr);
-
-BEGIN
-{
-	eval 'use HTML::HTML5::Parser::NamedEntityList;';
-	unless (@!)
-	{
-		while (my ($entity, $char) = each(%{ $HTML::HTML5::Parser::TagSoupParser::EntityChar }))
-		{
-			$Entities{$char} = $entity
-				if $entity =~ /;$/ 
-				&& $Entities{$char} cmp $entity;
-		}
-	}
-	
-	$Entities{'&'}  = 'amp;';
-	$Entities{'"'}  = 'quot;';
-	$Entities{'<'}  = 'lt;';
-	$Entities{'>'}  = 'gt;';
-}
 
 sub new
 {
@@ -336,36 +317,19 @@ sub encode_entities
 	$characters   .= '&';
 	$characters   .= '\x{0}-\x{8}\x{B}\x{C}\x{E}-\x{1F}\x{26}\x{7F}';
 	$characters   .= '\x{80}-\x{FFFFFF}' unless $self->{'charset'} =~ /^utf[_-]?8$/i;
-
-	$string =~ s/ ([$characters]) / $self->encode_entity($1) /egx;
 	
-	return $string;
+	my $regexp = qr/[$characters]/;
+	
+	local $HTML::HTML5::Entities::hex = ($self->{'refs'} !~ /dec/i);
+	return HTML::HTML5::Entities::encode_entities($string, $regexp);
 }
 
 sub encode_entity
 {
 	my ($self, $char) = @_;
-	return unless defined $char;
-	
-	if (length $char > 1)
-	{
-		return encode_entity(substr $char, 0, 1).encode_entity(substr $char, 1);
-	}
 
-	if ($char =~ /^[&<>"]$/)
-	{
-		return '&' . $Entities{$char};
-	}
-	elsif (!$self->is_xhtml && defined $Entities{$char})
-	{
-		return '&' . $Entities{$char};
-	}
-	elsif ($self->{'refs'} =~ /dec/i)
-	{
-		return sprintf('&#%d;', ord $char);
-	}
-
-	return sprintf('&#x%x;', ord $char);
+	local $HTML::HTML5::Entities::hex = ($self->{'refs'} !~ /dec/i);
+	return HTML::HTML5::Entities::encode_entities($char, qr/./);
 }
 
 sub _check_omit_end_body

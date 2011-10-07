@@ -14,24 +14,25 @@ readme_from         $fn;
 author              'Toby Inkster <tobyink@cpan.org>';
 license             'perl';
 
-requires            'common::sense'       => 0;
-requires            'Exporter'            => 0;
-recommends          'HTML::HTML5::Sanity' => 0;
-recommends          'HTML::HTML5::Parser' => '0.102';
-test_requires       'HTML::HTML5::Parser' => 0;
-test_requires       'Test::More'          => '0.61';
-requires            'XML::LibXML'         => '1.60';
+requires            'common::sense'         => 0;
+requires            'Exporter'              => 0;
+recommends          'HTML::HTML5::Sanity'   => 0;
+requires            'HTML::HTML5::Entities' => '0.001';
+recommends          'HTML::HTML5::Parser'   => 0;
+test_requires       'Test::More'            => '0.61';
+requires            'XML::LibXML'           => '1.60';
 
 resources(
-	'homepage'   => "http://search.cpan.org/dist/$dist/",
-	'repository' => "http://goddamn.co.uk/viewvc/perlmods/$dist/",
+	'homepage'   => "https://metacpan.org/release/$dist",
+	'repository' => "http://goddamn.co.uk/svn-web/perlmods/browse/$dist/",
 	'bugtracker' => "http://rt.cpan.org/Dist/Display.html?Queue=$dist",
 	);
 	
 write_doap_changes;
 write_doap_changes_xml;
+auto_license;
+auto_manifest;
 
-include 'Test::Signature';
 auto_install;
 WriteAll(
 	'meta' => 1,

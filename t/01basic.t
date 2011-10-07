@@ -2,26 +2,27 @@ use utf8;
 
 use Test::More tests => 3;
 BEGIN { use_ok('HTML::HTML5::Writer') };
-use HTML::HTML5::Parser;
+use XML::LibXML;
 
 my $input = <<INPUT;
-<title>foo</title>
-<style type="text/css">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>foo</title>
+<style type="text/css"><![CDATA[
 p { foo: "€"; }
-</style>
-<br foo=nar>
+]]></style>
+</head><body><br foo="nar" />
 <!-- ffooo-->
-<p bum=/bat/ quux=xyzzy hidden bim="&quot;">foo & €</p><p>foo</p>
+<p quux="xyzzy" bim='"' bum="/bat/" hidden="">foo &amp; €</p><p>foo</p>
 <table>
 <thead>
-<tr><th><th>
-</thead>
-<tr><th><td>
-<tbody><tr><th><td>
-</table>
+<tr><th></th><th>
+</th></tr></thead>
+<tbody><tr><th></th><td>
+</td></tr></tbody><tbody><tr><th></th><td>
+</td></tr></tbody></table>
+</body></html>
 INPUT
 
-my $parser = HTML::HTML5::Parser->new;
+my $parser = XML::LibXML->new;
 my $dom    = $parser->parse_string($input);
 
 my $hwriter = HTML::HTML5::Writer->new(markup=>'html');
