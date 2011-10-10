@@ -84,12 +84,6 @@ DESCRIPTION
             'dec' or 'hex' allows you to choose. The default is 'hex'.
 
   Public Methods
-    "$writer->is_xhtml"
-        Boolean indicating if $writer is configured to output XHTML.
-
-    "$writer->is_polyglot"
-        Boolean indicating if $writer is configured to output polyglot HTML.
-
     "$writer->document($node)"
         Outputs (i.e. returns a string that is) an XML::LibXML::Document as
         HTML.
@@ -109,6 +103,9 @@ DESCRIPTION
     "$writer->comment($node)"
         Outputs an XML::LibXML::Comment as HTML.
 
+    "$writer->pi($node)"
+        Outputs an XML::LibXML::PI as HTML.
+
     "$writer->doctype"
         Outputs the writer's DOCTYPE.
 
@@ -123,6 +120,24 @@ DESCRIPTION
     "$writer->encode_entity($char)"
         Returns $char entity-encoded. Encoding is done regardless of whether
         $char is "special" or not.
+
+    "$writer->is_xhtml"
+        Boolean indicating if $writer is configured to output XHTML.
+
+    "$writer->is_polyglot"
+        Boolean indicating if $writer is configured to output polyglot HTML.
+
+    "$writer->should_force_start_tags"
+    "$writer->should_force_end_tags"
+        Booleans indicating whether optional start and end tags should be
+        forced.
+
+    "$writer->should_quote_attributes"
+        Boolean indicating whether attributes need to be quoted.
+
+    "$writer->should_slash_voids"
+        Boolean indicating whether void elements should be closed in the
+        XHTML style.
 
 BUGS AND LIMITATIONS
     Certain DOM constructs cannot be output in non-XML HTML. e.g.

@@ -1,6 +1,6 @@
 package HTML::HTML5::Writer;
 
-use 5.008;
+use 5.010;
 use base qw[Exporter];
 use common::sense;
 use HTML::HTML5::Entities 0.001 qw[];
@@ -38,7 +38,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
 	};
 
-our $VERSION = '0.103';
+our $VERSION = '0.104';
 
 our %EXPORT_TAGS = (
 	doctype => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4 DOCTYPE_HTML5
@@ -142,13 +142,31 @@ sub should_force_start_tags
 sub document
 {
 	my ($self, $document) = @_;
-	return $self->doctype() . $self->element($document->documentElement);
+	my @childNodes = $document->childNodes;
+	return $self->doctype
+		. join '', (map { $self->_element_etc($_); } @childNodes);
 }
 
 sub doctype
 {
 	my ($self) = @_;
 	return $self->{'doctype'};
+}
+
+sub _element_etc
+{
+	my ($self, $etc) = @_;
+
+	if ($etc->nodeName eq '#text')
+		{ return $self->text($etc); }
+	elsif ($etc->nodeName eq '#comment')
+		{ return $self->comment($etc); }
+	elsif ($etc->nodeName eq '#cdata-section')
+		{ return $self->cdata($etc); }
+	elsif ($etc->isa('XML::LibXML::PI'))
+		{ return $self->pi($etc); }
+	else
+		{ return $self->element($etc); }			
 }
 
 sub element
@@ -199,14 +217,7 @@ sub element
 	
 	foreach my $kid (@kids)
 	{
-		if ($kid->nodeName eq '#text')
-			{ $rv .= $self->text($kid); }
-		elsif ($kid->nodeName eq '#comment')
-			{ $rv .= $self->comment($kid); }
-		elsif ($kid->nodeName eq '#cdata-section')
-			{ $rv .= $self->cdata($kid); }
-		else
-			{ $rv .= $self->element($kid); }			
+		$rv .= $self->_element_etc($kid);			
 	}
 	
 	unless ($omitend)
@@ -267,6 +278,16 @@ sub comment
 {
 	my ($self, $text) = @_;
 	return '<!--' . $self->encode_entities($text->nodeValue) . '-->';
+}
+
+sub pi
+{
+	my ($self, $pi) = @_;
+	if ($pi->nodeName eq 'decode')
+	{
+		return HTML::HTML5::Entities::decode($pi->textContent);
+	}
+	return $pi->toString;
 }
 
 sub cdata
@@ -639,14 +660,6 @@ can be expressed in decimal or hexadecimal. Setting this option to
 
 =over 4
 
-=item C<< $writer->is_xhtml >>
-
-Boolean indicating if $writer is configured to output XHTML.
-
-=item C<< $writer->is_polyglot >>
-
-Boolean indicating if $writer is configured to output polyglot HTML.
-
 =item C<< $writer->document($node) >>
 
 Outputs (i.e. returns a string that is) an XML::LibXML::Document as HTML.
@@ -671,6 +684,10 @@ Outputs an XML::LibXML::CDATASection as HTML.
 
 Outputs an XML::LibXML::Comment as HTML.
 
+=item C<< $writer->pi($node) >>
+
+Outputs an XML::LibXML::PI as HTML.
+
 =item C<< $writer->doctype >>
 
 Outputs the writer's DOCTYPE.
@@ -688,6 +705,28 @@ special:
 
 Returns $char entity-encoded. Encoding is done regardless of whether 
 $char is "special" or not.
+
+=item C<< $writer->is_xhtml >>
+
+Boolean indicating if $writer is configured to output XHTML.
+
+=item C<< $writer->is_polyglot >>
+
+Boolean indicating if $writer is configured to output polyglot HTML.
+
+=item C<< $writer->should_force_start_tags >>
+
+=item C<< $writer->should_force_end_tags >>
+
+Booleans indicating whether optional start and end tags should be forced.
+
+=item C<< $writer->should_quote_attributes >>
+
+Boolean indicating whether attributes need to be quoted.
+
+=item C<< $writer->should_slash_voids >>
+
+Boolean indicating whether void elements should be closed in the XHTML style.
 
 =back
 
