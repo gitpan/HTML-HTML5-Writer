@@ -40,4 +40,4 @@ resources:
   homepage: https://metacpan.org/release/HTML-HTML5-Writer
   license: http://dev.perl.org/licenses/
   repository: https://bitbucket.org/tobyink/p5-html-html5-writer
-version: 0.200
+version: 0.201

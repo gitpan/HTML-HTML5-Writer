@@ -124,3 +124,14 @@ my:v_0-200
 		dcs:item [ rdfs:label "Change default doctype for XHTML from DOCTYPE_HTML5 to DOCTYPE_LEGACY."@en ] ;
 		dcs:item [ rdfs:label "Default to polyglot output for XHTML."@en ]
 	] .
+
+my:project :release my:v_0-201 .
+my:v_0-201
+	a               :Version ;
+	dc:issued       "2012-06-12"^^xsd:date ;
+	:revision       "0.201"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/HTML-HTML5-Writer-0.201.tar.gz> ;
+	dcs:changeset [
+		dcs:versus my:v_0-200 ;
+		dcs:item [ rdfs:label "Polyglot output defaults."@en ; a dcs:Bugfix , dcs:Documentation ]
+	] .

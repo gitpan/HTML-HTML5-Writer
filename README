@@ -26,8 +26,8 @@ DESCRIPTION
             both XML and HTML. Set to false to produce content that might
             not.
 
-            If you don't explicitly set it, then it defaults to true for
-            HTML, and false for XHTML.
+            If you don't explicitly set it, then it defaults to false for
+            HTML, and true for XHTML.
 
         *   doctype
 

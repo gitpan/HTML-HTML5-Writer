@@ -6,6 +6,10 @@ Home page:    <https://metacpan.org/release/HTML-HTML5-Writer>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=HTML-HTML5-Writer>
 Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
 
+0.201  2012-06-12
+
+ - (Bugfix Documentation) Polyglot output defaults.
+
 0.200  2012-06-12
 
  - Change default doctype for XHTML from DOCTYPE_HTML5 to DOCTYPE_LEGACY.

@@ -38,7 +38,7 @@ use constant {
 	DOCTYPE_XHTML_RDFA11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
 };
 
-our $VERSION = '0.200';
+our $VERSION = '0.201';
 
 our %EXPORT_TAGS = (
 	doctype => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4 DOCTYPE_HTML5
@@ -582,8 +582,8 @@ Choose which serialisation of HTML5 to use: 'html' or 'xhtml'.
 Set to true in order to attempt to produce output which works as both
 XML and HTML. Set to false to produce content that might not.
 
-If you don't explicitly set it, then it defaults to true for HTML, and
-false for XHTML. 
+If you don't explicitly set it, then it defaults to false for HTML, and
+true for XHTML. 
 
 =item * B<doctype>
 
