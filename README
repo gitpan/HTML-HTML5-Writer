@@ -22,14 +22,22 @@ DESCRIPTION
 
         *   polyglot
 
-            Set to '1' in order to attempt to produce output which works as
-            both XML and HTML.
+            Set to true in order to attempt to produce output which works as
+            both XML and HTML. Set to false to produce content that might
+            not.
+
+            If you don't explicitly set it, then it defaults to true for
+            HTML, and false for XHTML.
 
         *   doctype
 
             Set this to a string to choose which <!DOCTYPE> tag to output.
             Note, this purely sets the <!DOCTYPE> tag and does not change
-            how the rest of the document is output.
+            how the rest of the document is output. This really is just a
+            plain string literal...
+
+             # Yes, this works...
+             my $w = HTML::HTML5::Writer->new(doctype => '<!doctype html>');
 
             The following constants are provided for convenience:
             DOCTYPE_HTML2, DOCTYPE_HTML32, DOCTYPE_HTML4 (latest stable
@@ -47,7 +55,7 @@ DESCRIPTION
             DOCTYPE_XHTML_RDFA (latest stable strict XHTML+RDFa),
             DOCTYPE_XHTML_RDFA10, DOCTYPE_XHTML_RDFA11.
 
-            Defaults to DOCTYPE_HTML5.
+            Defaults to DOCTYPE_HTML5 for HTML and DOCTYPE_LEGACY for XHTML.
 
         *   charset
 
@@ -59,21 +67,21 @@ DESCRIPTION
 
         *   quote_attributes
 
-            Set this to a 'force' to force attributes to be quoted.
-            Otherwise, the writer will automatically detect when attributes
-            need quoting.
+            Set this to a true to force attributes to be quoted. If not
+            explicitly set, the writer will automatically detect when
+            attributes need quoting.
 
         *   voids
 
-            Set to 'slash' to force void elements to always be terminated
-            with '/>'. Otherwise, they'll only be terminated that way in
-            polyglot or XHTML documents.
+            Set this to true to force void elements to always be terminated
+            with '/>'. If not explicitly set, they'll only be terminated
+            that way in polyglot or XHTML documents.
 
         *   start_tags and end_tags
 
             Except in polyglot and XHTML documents, some elements allow
             their start and/or end tags to be omitted in certain
-            circumstances. By setting these to 'force', you can prevent them
+            circumstances. By setting these to true, you can prevent them
             from being omitted.
 
         *   refs
@@ -167,16 +175,15 @@ BUGS AND LIMITATIONS
     Please report any bugs to <http://rt.cpan.org/>.
 
 SEE ALSO
-    HTML::HTML5::Parser, HTML::HTML5::Sanity, XML::LibXML,
-    XML::LibXML::Debugging.
+    HTML::HTML5::Parser, HTML::HTML5::Builder, HTML::HTML5::ToText,
+    XML::LibXML.
 
 AUTHOR
     Toby Inkster <tobyink@cpan.org>.
 
 COPYRIGHT AND LICENSE
-    Copyright (C) 2010-2011 by Toby Inkster
+    Copyright (C) 2010-2012 by Toby Inkster.
 
     This library is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself, either Perl version 5.8 or, at your
-    option, any later version of Perl 5 you may have available.
+    under the same terms as Perl itself.
 

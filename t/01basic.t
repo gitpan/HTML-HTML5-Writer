@@ -25,8 +25,14 @@ INPUT
 my $parser = XML::LibXML->new;
 my $dom    = $parser->parse_string($input);
 
-my $hwriter = HTML::HTML5::Writer->new(markup=>'html');
-my $xwriter = HTML::HTML5::Writer->new(markup=>'xhtml',doctype=>HTML::HTML5::Writer::DOCTYPE_XHTML1);
+my $hwriter = HTML::HTML5::Writer->new(
+	markup   => 'html',
+);
+my $xwriter = HTML::HTML5::Writer->new(
+	markup   => 'xhtml',
+	polyglot => 0,
+	doctype  => HTML::HTML5::Writer::DOCTYPE_XHTML1,
+);
 
 is($hwriter->document($dom), <<HTML, 'HTML output');
 <!DOCTYPE html><title>foo</title>

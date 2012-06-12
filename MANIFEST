@@ -17,6 +17,7 @@ inc/Module/Package.pm
 inc/Module/Package/Dist/RDF.pm
 inc/Scalar/Util.pm
 inc/Scalar/Util/PP.pm
+inc/unicore/Name.pm
 inc/YAML/Tiny.pm
 lib/HTML/HTML5/Writer.pm
 LICENSE
@@ -28,5 +29,4 @@ meta/doap.ttl
 meta/makefile.ttl
 README
 t/01basic.t
-TODO
 SIGNATURE                                Public-key signature (added by MakeMaker)

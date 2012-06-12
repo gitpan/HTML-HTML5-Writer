@@ -2,7 +2,7 @@ package HTML::HTML5::Writer;
 
 use 5.010;
 use base qw[Exporter];
-use common::sense;
+use strict;
 use HTML::HTML5::Entities 0.001 qw[];
 use XML::LibXML qw[:all];
 
@@ -15,7 +15,7 @@ use constant {
 	DOCTYPE_XHTML1           => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
 	DOCTYPE_XHTML11          => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">',
 	DOCTYPE_XHTML_BASIC      => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">',
-	DOCTYPE_XHTML_RDFA       => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">',
+	DOCTYPE_XHTML_RDFA       => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
 	DOCTYPE_HTML2            => '<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">',
 	DOCTYPE_HTML40           => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/strict.dtd">',
 	DOCTYPE_HTML40_STRICT    => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/strict.dtd">',
@@ -36,9 +36,9 @@ use constant {
 	DOCTYPE_HTML401_RDFA10   => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/html401-rdfa-1.dtd">',
 	DOCTYPE_XHTML_RDFA10     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">',
 	DOCTYPE_XHTML_RDFA11     => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">',
-	};
+};
 
-our $VERSION = '0.104';
+our $VERSION = '0.200';
 
 our %EXPORT_TAGS = (
 	doctype => [qw(DOCTYPE_NIL DOCTYPE_HTML32 DOCTYPE_HTML4 DOCTYPE_HTML5
@@ -89,10 +89,15 @@ our @OptionalEnd = qw(html head body tbody dt dd li optgroup
 sub new
 {
 	my ($class, %opts) = @_;
-	$opts{'markup'}   ||= 'html';
-	$opts{'doctype'}  ||= DOCTYPE_HTML5;
-	$opts{'charset'}  ||= 'utf8';
-	return bless \%opts, $class;
+	my $self = bless \%opts => $class;
+	
+	$self->{'markup'}   //= 'html';
+	$self->{'charset'}  //= 'utf8';
+	$self->{'refs'}     //= 'hex';
+	$self->{'doctype'}  //= ($self->is_xhtml? DOCTYPE_LEGACY : DOCTYPE_HTML5);
+	$self->{'polyglot'} //= !!$self->is_xhtml;
+	
+	return $self;
 }
 
 sub is_xhtml
@@ -104,39 +109,35 @@ sub is_xhtml
 sub is_polyglot
 {
 	my ($self) = @_;
-	return ($self->{'polyglot'} =~ /(yes|1)/i);
+	return $self->{'polyglot'};
 }
 
 sub should_quote_attributes
 {
 	my ($self) = @_;
-	return ($self->{'quote_attributes'} =~ /(yes|1|always|force)/i)
-		|| $self->is_xhtml
-		|| $self->is_polyglot;
+	return $self->{'quote_attributes'} if exists $self->{'quote_attributes'};
+	return $self->is_xhtml || $self->is_polyglot;
 }
 
 sub should_slash_voids
 {
 	my ($self) = @_;
-	return ($self->{'voids'} =~ /(slash)/i)
-		|| $self->is_xhtml
-		|| $self->is_polyglot;
+	return $self->{'voids'} if exists $self->{'voids'};
+	return $self->is_xhtml || $self->is_polyglot;
 }
 
 sub should_force_end_tags
 {
 	my ($self) = @_;
-	return ($self->{'end_tags'} =~ /(yes|1|always|force)/i)
-		|| $self->is_xhtml
-		|| $self->is_polyglot;
+	return $self->{'end_tags'} if exists $self->{'end_tags'};
+	return $self->is_xhtml || $self->is_polyglot;
 }
 
 sub should_force_start_tags
 {
 	my ($self) = @_;
-	return ($self->{'start_tags'} =~ /(yes|1|always|force)/i)
-		|| $self->is_xhtml
-		|| $self->is_polyglot;
+	return $self->{'start_tags'} if exists $self->{'start_tags'};
+	return $self->is_xhtml || $self->is_polyglot;
 }
 
 sub document
@@ -578,14 +579,20 @@ Choose which serialisation of HTML5 to use: 'html' or 'xhtml'.
 
 =item * B<polyglot>
 
-Set to '1' in order to attempt to produce output which works as
-both XML and HTML.
+Set to true in order to attempt to produce output which works as both
+XML and HTML. Set to false to produce content that might not.
+
+If you don't explicitly set it, then it defaults to true for HTML, and
+false for XHTML. 
 
 =item * B<doctype>
 
-Set this to a string to choose which <!DOCTYPE> tag to output.
-Note, this purely sets the <!DOCTYPE> tag and does not change
-how the rest of the document is output.
+Set this to a string to choose which <!DOCTYPE> tag to output. Note, this
+purely sets the <!DOCTYPE> tag and does not change how the rest of the
+document is output. This really is just a plain string literal...
+
+ # Yes, this works...
+ my $w = HTML::HTML5::Writer->new(doctype => '<!doctype html>');
 
 The following constants are provided for convenience:
 B<DOCTYPE_HTML2>,
@@ -618,32 +625,31 @@ B<DOCTYPE_XHTML_RDFA> (latest stable strict XHTML+RDFa),
 B<DOCTYPE_XHTML_RDFA10>,
 B<DOCTYPE_XHTML_RDFA11>.
 
-Defaults to DOCTYPE_HTML5.
+Defaults to DOCTYPE_HTML5 for HTML and DOCTYPE_LEGACY for XHTML.
 
 =item * B<charset>
 
-This module always returns strings in Perl's internal utf8
-encoding, but you can set the 'charset' option to
-'ascii' to create output that would be suitable for re-encoding
-to ASCII (e.g. it will entity-encode characters which do not
-exist in ASCII).
+This module always returns strings in Perl's internal utf8 encoding, but
+you can set the 'charset' option to 'ascii' to create output that would
+be suitable for re-encoding to ASCII (e.g. it will entity-encode characters
+which do not exist in ASCII).
 
 =item * B<quote_attributes>
 
-Set this to a 'force' to force attributes to be quoted. Otherwise,
-the writer will automatically detect when attributes need quoting.
+Set this to a true to force attributes to be quoted. If not explicitly
+set, the writer will automatically detect when attributes need quoting.
 
 =item * B<voids>
 
-Set to 'slash' to force void elements to always be terminated with
-'/>'. Otherwise, they'll only be terminated that way in polyglot
-or XHTML documents.
+Set this to true to force void elements to always be terminated with '/>'.
+If not explicitly set, they'll only be terminated that way in polyglot or
+XHTML documents.
 
 =item * B<start_tags> and B<end_tags>
 
 Except in polyglot and XHTML documents, some elements allow their
 start and/or end tags to be omitted in certain circumstances. By
-setting these to 'force', you can prevent them from being omitted.
+setting these to true, you can prevent them from being omitted.
 
 =item * B<refs>
 
@@ -761,8 +767,10 @@ Please report any bugs to L<http://rt.cpan.org/>.
 
 =head1 SEE ALSO
 
-L<HTML::HTML5::Parser>, L<HTML::HTML5::Sanity>, 
-L<XML::LibXML>, L<XML::LibXML::Debugging>.
+L<HTML::HTML5::Parser>,
+L<HTML::HTML5::Builder>,
+L<HTML::HTML5::ToText>,
+L<XML::LibXML>.
 
 =head1 AUTHOR
 
@@ -770,11 +778,10 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010-2011 by Toby Inkster
+Copyright (C) 2010-2012 by Toby Inkster.
 
 This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8 or,
-at your option, any later version of Perl 5 you may have available.
+it under the same terms as Perl itself.
 
 
 =cut
